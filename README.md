@@ -1,6 +1,6 @@
 # Mundiagua Image Processing
 
-Processes images uploaded to S3 and generates thumbnails.
+Processes uploaded images to S3 and generates thumbnails.
 
 ## Useful commands
 
