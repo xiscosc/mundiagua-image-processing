@@ -1,0 +1,43 @@
+{
+  "name": "mundiagua-image-processing",
+  "version": "1.0.0",
+  "bin": {
+    "mundiagua-image-processing": "cdk/mundiagua-image-processing.ts"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "prepare": "husky install",
+    "format:check": "prettier --check --loglevel warn .",
+    "format:fix": "prettier --write --loglevel warn ."
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-lambda": "1.132.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.132.0",
+    "@aws-cdk/aws-s3": "1.132.0",
+    "@aws-cdk/aws-s3-notifications": "1.132.0",
+    "@aws-cdk/core": "1.132.0",
+    "@tsconfig/node14": "1.0.1",
+    "@types/image-thumbnail": "1.0.0",
+    "@types/jest": "27.0.3",
+    "@types/node": "10.17.27",
+    "aws-cdk": "1.132.0",
+    "esbuild": "0.13.14",
+    "husky": "7.0.2",
+    "jest": "27.3.1",
+    "lint-staged": "11.2.0",
+    "prettier": "2.4.1",
+    "ts-jest": "27.0.7",
+    "ts-node": "10.4.0",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.42.0",
+    "image-thumbnail": "1.0.14",
+    "get-stream": "6.0.1"
+  }
+}
