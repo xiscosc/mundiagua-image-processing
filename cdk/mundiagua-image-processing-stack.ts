@@ -1,14 +1,14 @@
-import { App, Duration, Stack, StackProps } from "@aws-cdk/core";
+import { App, Duration, Stack, StackProps } from "aws-cdk-lib";
 import {
   BlockPublicAccess,
   Bucket,
   BucketProps,
   CorsRule,
   HttpMethods,
-} from "@aws-cdk/aws-s3";
-import { LambdaDestination } from "@aws-cdk/aws-s3-notifications";
-import { Runtime } from "@aws-cdk/aws-lambda";
-import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
+} from "aws-cdk-lib/aws-s3";
+import { LambdaDestination } from "aws-cdk-lib/aws-s3-notifications";
+import { Runtime } from "aws-cdk-lib/aws-lambda";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import * as path from "path";
 
 interface MundiaguaImageStackProps extends StackProps {

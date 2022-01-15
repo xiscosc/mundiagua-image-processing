@@ -16,16 +16,12 @@
     "format:fix": "prettier --write --loglevel warn ."
   },
   "devDependencies": {
-    "@aws-cdk/aws-lambda": "1.134.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.134.0",
-    "@aws-cdk/aws-s3": "1.134.0",
-    "@aws-cdk/aws-s3-notifications": "1.134.0",
-    "@aws-cdk/core": "1.134.0",
     "@tsconfig/node14": "1.0.1",
     "@types/image-thumbnail": "1.0.0",
     "@types/jest": "27.0.3",
     "@types/node": "10.17.27",
-    "aws-cdk": "1.134.0",
+    "aws-cdk-lib": "2.8.0",
+    "constructs": "10.0.34",
     "esbuild": "0.13.14",
     "husky": "7.0.2",
     "jest": "27.3.1",
