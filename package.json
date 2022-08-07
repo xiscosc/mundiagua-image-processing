@@ -16,24 +16,24 @@
     "format:fix": "prettier --write --loglevel warn ."
   },
   "devDependencies": {
-    "@tsconfig/node14": "1.0.1",
-    "@types/image-thumbnail": "1.0.0",
-    "@types/jest": "27.0.3",
-    "@types/node": "10.17.27",
-    "aws-cdk-lib": "2.8.0",
-    "constructs": "10.0.34",
-    "esbuild": "0.13.14",
-    "husky": "7.0.2",
-    "jest": "27.3.1",
-    "lint-staged": "11.2.0",
-    "prettier": "2.4.1",
-    "ts-jest": "27.0.7",
-    "ts-node": "10.4.0",
-    "typescript": "4.5.2"
+    "@tsconfig/node14": "1.0.3",
+    "@types/image-thumbnail": "1.0.1",
+    "@types/jest": "27.5.2",
+    "@types/node": "10.17.60",
+    "aws-cdk-lib": "2.35.0",
+    "constructs": "10.1.69",
+    "esbuild": "0.14.53",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "lint-staged": "11.2.6",
+    "prettier": "2.7.1",
+    "ts-jest": "27.1.5",
+    "ts-node": "10.9.1",
+    "typescript": "4.7.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.43.0",
-    "image-thumbnail": "1.0.14",
+    "@aws-sdk/client-s3": "3.142.0",
+    "image-thumbnail": "1.0.15",
     "get-stream": "6.0.1"
   }
 }
