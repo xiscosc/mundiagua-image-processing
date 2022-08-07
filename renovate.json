@@ -1,0 +1,9 @@
+{
+    "extends": [":ignoreModulesAndTests", ":pinVersions"],
+    "enabled": true,
+    "dependencyDashboard": false,
+    "branchPrefix": "renovate-",
+    "commitMessagePrefix": "⬆️ ",
+    "groupName": "all"
+  }
+  
