@@ -6,6 +6,7 @@ import {
   CorsRule,
   HttpMethods,
 } from "aws-cdk-lib/aws-s3";
+import { AttributeType, BillingMode, Table } from "aws-cdk-lib/aws-dynamodb";
 import { LambdaDestination } from "aws-cdk-lib/aws-s3-notifications";
 import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
@@ -53,7 +54,7 @@ export class MundiaguaImageProcessingStack extends Stack {
       "thumbnailGeneratorImage-" + this.props.stage,
       {
         memorySize: 512,
-        runtime: Runtime.NODEJS_14_X,
+        runtime: Runtime.NODEJS_16_X,
         handler: "handler",
         entry: path.join(__dirname, `/../src/images/generate-thumbnail.ts`),
         timeout: Duration.seconds(30),
@@ -74,5 +75,27 @@ export class MundiaguaImageProcessingStack extends Stack {
     imagesProcessingBucket.addObjectCreatedNotification(
       new LambdaDestination(thumbnailLambda)
     );
+
+    /*
+     * DATA TABLES
+     */
+
+    const commonProps = {
+      billingMode: BillingMode.PAY_PER_REQUEST,
+      partitionKey: { name: "model", type: AttributeType.STRING },
+      sortKey: { name: "s3Key", type: AttributeType.STRING },
+    };
+
+    // DOCUMENTS
+    new Table(this, "uploaded-documents-" + this.props.stage, {
+      tableName: "uploaded-documents-" + this.props.stage,
+      ...commonProps,
+    });
+
+    // IMAGES
+    new Table(this, "uploaded-images-" + this.props.stage, {
+      tableName: "uploaded-images-" + this.props.stage,
+      ...commonProps,
+    });
   }
 }

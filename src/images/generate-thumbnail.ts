@@ -7,10 +7,11 @@ import {
   CopyObjectCommand,
   CopyObjectCommandInput,
 } from "@aws-sdk/client-s3";
+import { S3Event } from "aws-lambda";
 const imageThumbnail = require("image-thumbnail");
 const getStream = require("get-stream");
 
-export const handler = async (event: any = {}): Promise<any> => {
+export const handler = async (event: S3Event): Promise<any> => {
   const client = new S3Client({});
   await Promise.all(
     event.Records.map(async (entry: any) => {
