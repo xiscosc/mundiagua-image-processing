@@ -80,22 +80,12 @@ export class MundiaguaImageProcessingStack extends Stack {
      * DATA TABLES
      */
 
-    const commonProps = {
+    // DOCUMENTS & IMAGES
+    new Table(this, "uploaded-files-" + this.props.stage, {
+      tableName: "uploaded-files-" + this.props.stage,
       billingMode: BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "model", type: AttributeType.STRING },
-      sortKey: { name: "s3Key", type: AttributeType.STRING },
-    };
-
-    // DOCUMENTS
-    new Table(this, "uploaded-documents-" + this.props.stage, {
-      tableName: "uploaded-documents-" + this.props.stage,
-      ...commonProps,
-    });
-
-    // IMAGES
-    new Table(this, "uploaded-images-" + this.props.stage, {
-      tableName: "uploaded-images-" + this.props.stage,
-      ...commonProps,
+      sortKey: { name: "fileId", type: AttributeType.STRING },
     });
   }
 }
