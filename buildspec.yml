@@ -15,9 +15,9 @@ phases:
     commands:
       - npm run build
       - echo Runing cdk
-      - npx cdk bootstrap
-      - npx cdk diff
-      - npx cdk deploy --all --require-approval never
+      - npm cdk bootstrap
+      - npm cdk diff
+      - npm cdk deploy --all --require-approval never
   post_build:
     commands:
       - echo Build completed on `date`
