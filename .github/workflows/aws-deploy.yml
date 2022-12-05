@@ -31,7 +31,7 @@ jobs:
           aws-region: "eu-west-1"
 
       - name: Bootstrap AWS Account
-        run: npx cdk boostrap
+        run: npx cdk bootstrap
         env:
           stage: dev
           imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET_DEV }}
