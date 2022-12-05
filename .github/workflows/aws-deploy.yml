@@ -5,7 +5,8 @@ on:
       - main
 
 jobs:
-  aws_cdk:
+  deploy-dev:
+    name: Deploy to dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -52,4 +53,55 @@ jobs:
           stage: dev
           imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET_DEV }}
           allowedOrigins: "http://localhost:8000,http://localho.st:8000"
+          AWS_REGION: "eu-west-1"
+
+  deploy-prod:
+    name: Deploy to prod
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: "eu-west-1"
+
+      - name: Bootstrap AWS Account
+        run: npx cdk bootstrap
+        env:
+          stage: prod
+          imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET_PROD }}
+          allowedOrigins: ${{ secrets.ALLOWED_ORIGINS_PROD }}
+          AWS_REGION: "eu-west-1"
+
+      - name: Diff stack
+        run: npx cdk diff
+        env:
+          stage: prod
+          imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET_PROD }}
+          allowedOrigins: ${{ secrets.ALLOWED_ORIGINS_PROD }}
+          AWS_REGION: "eu-west-1"
+
+      - name: Deploy stack
+        run: npx cdk deploy --all --require-approval never
+        env:
+          stage: prod
+          imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET_PROD }}
+          allowedOrigins: ${{ secrets.ALLOWED_ORIGINS_PROD }}
           AWS_REGION: "eu-west-1"
