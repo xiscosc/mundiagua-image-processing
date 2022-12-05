@@ -86,6 +86,7 @@ export class MundiaguaImageProcessingStack extends Stack {
       billingMode: BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "model", type: AttributeType.STRING },
       sortKey: { name: "fileId", type: AttributeType.STRING },
+      pointInTimeRecovery: true,
     });
   }
 }
