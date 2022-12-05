@@ -9,7 +9,8 @@ import {
 } from "@aws-sdk/client-s3";
 import { S3Event } from "aws-lambda";
 const imageThumbnail = require("image-thumbnail");
-const getStream = require("get-stream");
+import getStream from "get-stream";
+import { Stream } from "stream";
 
 export const handler = async (event: S3Event): Promise<any> => {
   const client = new S3Client({});
@@ -34,7 +35,7 @@ async function generateThumbnail(key: string, client: S3Client) {
   };
 
   const thumbnail = await imageThumbnail(
-    await getStream.buffer(file.Body),
+    await getStream.buffer(file.Body as Stream),
     imageOptions
   );
   const putThumbnailParams: PutObjectCommandInput = {

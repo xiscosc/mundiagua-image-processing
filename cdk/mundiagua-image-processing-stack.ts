@@ -54,7 +54,7 @@ export class MundiaguaImageProcessingStack extends Stack {
       "thumbnailGeneratorImage-" + this.props.stage,
       {
         memorySize: 512,
-        runtime: Runtime.NODEJS_16_X,
+        runtime: Runtime.NODEJS_18_X,
         handler: "handler",
         entry: path.join(__dirname, `/../src/images/generate-thumbnail.ts`),
         timeout: Duration.seconds(30),
