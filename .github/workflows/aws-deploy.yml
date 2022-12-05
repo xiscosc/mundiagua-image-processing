@@ -35,13 +35,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: "eu-west-1"
 
-      - name: Bootstrap AWS Account
-        run: npx cdk bootstrap
-        env:
-          stage: dev
-          imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET }}
-          allowedOrigins: "http://localhost:8000,http://localho.st:8000"
-
       - name: Diff stack
         run: npx cdk diff
         env:
@@ -83,13 +76,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: "eu-west-1"
-
-      - name: Bootstrap AWS Account
-        run: npx cdk bootstrap
-        env:
-          stage: prod
-          imagesDestinationBucketArn: ${{ secrets.IMAGES_BUCKET }}
-          allowedOrigins: ${{ secrets.ALLOWED_ORIGINS }}
 
       - name: Diff stack
         run: npx cdk diff
