@@ -1,3 +1,5 @@
+name: aws-deploy
+run-name: Deploy to AWS
 on:
   workflow_dispatch:
   push:

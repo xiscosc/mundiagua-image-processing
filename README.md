@@ -1,4 +1,4 @@
-# Mundiagua Image Processing
+# Mundiagua Image Processing ![aws](https://github.com/xiscosc/mundiagua-image-processing/actions/workflows/aws-deploy.yml/badge.svg)
 
 Processes uploaded images to S3 and generates thumbnails.
 
